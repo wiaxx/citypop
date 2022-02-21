@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import HomePage from './src/HomePage';
-import Country from './src/Country';
-import City from './src/City';
+import HomePage from './src/pages/Home';
+import Country from './src/pages/Country';
+import City from './src/pages/City';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
@@ -13,7 +13,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name='Home'
+          name='CityPop'
           component={HomePage}
         />
         <Stack.Screen
