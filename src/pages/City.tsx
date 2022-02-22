@@ -1,15 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Pressable, TextInput } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet, View } from 'react-native';
+import Input from '../components/Input';
 
 const City = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>SEARCH BY CITY</Text>
-            <TextInput defaultValue='Enter a city' style={styles.txtInput} />
-            <Pressable>
-                <AntDesign name="search1" size={24} color="black" />
-            </Pressable>
+            <Input title="SEARCH BY CITY" placeholder="Enter a city" />
         </View>
     )
 }
@@ -20,16 +16,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    txtInput: {
-        height: 40,
-        width: "98%",
-        borderColor: 'gray',
-        borderWidth: 1
-    },
-    title: {
-        fontSize: 28,
-        marginBottom: 50,
     },
 });
 
