@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Pressable, TouchableOpacity } from 'react-nativ
 
 // TouchableOpacity
 
-const HomePage = ({ navigation }) => {
+const HomePage = ({ navigation }: { navigation: any }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>CityPop</Text>
