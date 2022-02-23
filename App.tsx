@@ -5,6 +5,7 @@ import City from './src/pages/City';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import SearchCity from './src/pages/SearchCity';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,12 +18,16 @@ export default function App() {
           component={HomePage}
         />
         <Stack.Screen
-          name='City'
-          component={City}
+          name='Search City'
+          component={SearchCity}
         />
         <Stack.Screen
           name='Country'
           component={Country}
+        />
+        <Stack.Screen
+          name='City'
+          component={City}
         />
       </Stack.Navigator>
       { /* <React.Fragment> <StatusBar style="auto" /></React.Fragment> */}

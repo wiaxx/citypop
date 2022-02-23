@@ -8,7 +8,7 @@ const HomePage = ({ navigation }: { navigation: any }) => {
         <View style={styles.container}>
             <Text style={styles.title}>CityPop</Text>
 
-            <Pressable style={styles.searchBtn} onPress={() => navigation.navigate('City')}>
+            <Pressable style={styles.searchBtn} onPress={() => navigation.navigate('Search City')}>
                 <Text>SEARCH BY CITY</Text>
             </Pressable>
 
