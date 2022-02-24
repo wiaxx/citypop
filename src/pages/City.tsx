@@ -5,15 +5,14 @@ import NumberFormat from 'react-number-format';
 const City = ({ route }: { route: any }) => {
     const { value } = route.params;
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any[]>([]);
 
     const fetchData = async (city: string) => {
         try {
             setLoading(true)
             const response = await fetch(`http://api.geonames.org/searchJSON?username=weknowit&name_startsWith=${city}&maxRows=1&featureClass=P`);
             const data = await response.json();
-            setData(data);
-            console.log(data);
+            setData(data.geonames);
         } catch (error) {
             console.error(error);
         } finally {
@@ -30,20 +29,22 @@ const City = ({ route }: { route: any }) => {
             {
                 loading
                     ? <Text>Loading...</Text>
-                    : <>
-                        <Text style={styles.title}>{data.geonames[0].name}</Text>
-                        <View style={styles.populationBox}>
-                            <Text style={styles.smallTitle}>Population</Text>
-                            <Text style={styles.population}>
-                                <NumberFormat value={data.geonames[0].population}
-                                    displayType={'text'}
-                                    thousandSeparator={" "}
-                                    allowNegative={false}
-                                    fixedDecimalScale={true}
-                                />
-                            </Text>
-                        </View>
-                    </>
+                    : data.length > 0
+                        ? <>
+                            <Text style={styles.title}>{data[0].name}</Text>
+                            <View style={styles.populationBox}>
+                                <Text style={styles.smallTitle}>Population</Text>
+                                <Text style={styles.population}>
+                                    <NumberFormat value={data[0].population}
+                                        displayType={'text'}
+                                        thousandSeparator={" "}
+                                        allowNegative={false}
+                                        fixedDecimalScale={true}
+                                    />
+                                </Text>
+                            </View>
+                        </>
+                        : <Text>Sorry, no city found. Please try again</Text>
             }
         </View>
     )

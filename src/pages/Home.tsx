@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Pressable, TouchableOpacity } from 'react-native';
-
-// TouchableOpacity
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 const HomePage = ({ navigation }: { navigation: any }) => {
     return (
@@ -12,7 +10,7 @@ const HomePage = ({ navigation }: { navigation: any }) => {
                 <Text>SEARCH BY CITY</Text>
             </Pressable>
 
-            <Pressable style={styles.searchBtn} onPress={() => navigation.navigate('Country')}>
+            <Pressable style={styles.searchBtn} onPress={() => navigation.navigate('Search Country')}>
                 <Text>SEARCH BY COUNTRY</Text>
             </Pressable>
         </View>
