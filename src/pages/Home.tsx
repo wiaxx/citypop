@@ -7,11 +7,11 @@ const HomePage = ({ navigation }: { navigation: any }) => {
             <Text style={styles.title}>CityPop</Text>
 
             <Pressable style={styles.searchBtn} onPress={() => navigation.navigate('Search City')}>
-                <Text>SEARCH BY CITY</Text>
+                <Text style={styles.uppercase}>SEARCH BY CITY</Text>
             </Pressable>
 
             <Pressable style={styles.searchBtn} onPress={() => navigation.navigate('Search Country')}>
-                <Text>SEARCH BY COUNTRY</Text>
+                <Text style={styles.uppercase}>SEARCH BY COUNTRY</Text>
             </Pressable>
         </View>
     )
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
     },
     searchBtn: {
         width: '98%',
@@ -36,7 +35,10 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 28,
-        marginBottom: 50,
+        padding: 80,
+    },
+    uppercase: {
+        textTransform: 'uppercase',
     }
 });
 
