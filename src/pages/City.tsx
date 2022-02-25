@@ -30,23 +30,25 @@ const City = ({ route }: { route: any }) => {
                 loading
                     ? <Text>Loading...</Text>
                     : data.length > 0
-                        ? <>
+                        ? <View>
                             <Text style={styles.title}>{data[0].name}</Text>
                             <View style={styles.populationBox}>
                                 <Text style={styles.smallTitle}>Population</Text>
                                 <Text style={styles.population}>
-                                    <NumberFormat value={data[0].population}
+                                    <NumberFormat
+                                        value={data[0].population}
                                         displayType={'text'}
                                         thousandSeparator={" "}
                                         allowNegative={false}
                                         fixedDecimalScale={true}
+                                        renderText={value => <Text>{value}</Text>}
                                     />
                                 </Text>
                             </View>
-                        </>
+                        </View>
                         : <Text>Sorry, no city found. Please try again</Text>
             }
-        </View>
+        </View >
     )
 }
 
