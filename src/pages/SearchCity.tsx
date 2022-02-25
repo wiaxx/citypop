@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Pressable, TextInput, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const SearchCity = ({ navigation }: { navigation: any }) => {
@@ -7,15 +7,18 @@ const SearchCity = ({ navigation }: { navigation: any }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>SEARCH BY CITY</Text>
-            <TextInput
-                placeholder='Enter a city'
-                onChangeText={newValue => setValue(newValue)}
-                defaultValue={value}
-                style={styles.txtInput} />
-            <Pressable onPress={() => navigation.navigate('City', { value: value })}>
-                <AntDesign name="search1" size={24} color="black" />
-            </Pressable>
+            <ScrollView>
+                <Text style={styles.title}>SEARCH BY CITY</Text>
+                <TextInput
+                    placeholder='Enter a city'
+                    onChangeText={newValue => setValue(newValue)}
+                    defaultValue={value}
+                    style={styles.txtInput} />
+                    {/* onPress, go to City page and make an api request with value from */}
+                <Pressable onPress={() => navigation.navigate('City', { value: value })}> 
+                    <AntDesign name="search1" size={34} color="black" style={styles.searchIcon} />
+                </Pressable>
+            </ScrollView>
         </View>
     )
 }
@@ -25,7 +28,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
     },
     txtInput: {
         height: 40,
@@ -33,11 +35,16 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 10,
+        textAlign: 'center',
     },
     title: {
         fontSize: 28,
-        marginBottom: 50,
+        padding: 80,
+        textAlign: 'center',
     },
+    searchIcon: {
+        textAlign: 'center',
+    }
 });
 
 export default SearchCity;

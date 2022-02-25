@@ -3,7 +3,9 @@ import { StyleSheet, View, Text } from 'react-native';
 import NumberFormat from 'react-number-format';
 
 const City = ({ route }: { route: any }) => {
+    // destructuring params from searchCity-page, use for fetch city
     const { value } = route.params;
+    // states for api request
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<any[]>([]);
 
@@ -21,6 +23,7 @@ const City = ({ route }: { route: any }) => {
     };
 
     useEffect(() => {
+        // use encodeURIComponent to replace certain characteres
         fetchData(encodeURIComponent(value))
     }, [])
 
@@ -28,9 +31,9 @@ const City = ({ route }: { route: any }) => {
         <View style={styles.container}>
             {
                 loading
-                    ? <Text>Loading...</Text>
+                    ? <Text style={styles.message}>Loading...</Text>
                     : data.length > 0
-                        ? <View>
+                        ? <>
                             <Text style={styles.title}>{data[0].name}</Text>
                             <View style={styles.populationBox}>
                                 <Text style={styles.smallTitle}>Population</Text>
@@ -45,8 +48,8 @@ const City = ({ route }: { route: any }) => {
                                     />
                                 </Text>
                             </View>
-                        </View>
-                        : <Text>Sorry, no city found. Please try again</Text>
+                        </>
+                        : <Text style={styles.message}>Sorry, no city found. Please try again</Text>
             }
         </View >
     )
@@ -57,7 +60,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
     },
     populationBox: {
         width: '98%',
@@ -71,15 +73,20 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 28,
-        marginBottom: 50,
+        padding: 80,
+        textAlign: 'center',
     },
     smallTitle: {
         marginBottom: 14,
         textTransform: 'uppercase',
-
     },
     population: {
         fontSize: 24,
+    },
+    message: {
+        fontSize: 20,
+        padding: 80,
+        textAlign: 'center',
     }
 });
 
