@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const SearchCountry = ({ navigation }: { navigation: any }) => {
@@ -15,9 +15,9 @@ const SearchCountry = ({ navigation }: { navigation: any }) => {
                     defaultValue={value}
                     style={styles.txtInput} />
                 {/* onPress, go to Country page and make an api request with value from input */}
-                <Pressable onPress={() => navigation.navigate('Country', { value: value })}>
+                <TouchableOpacity onPress={() => navigation.navigate('Country', { value: value })}>
                     <AntDesign name="search1" size={34} color="black" style={styles.searchIcon} />
-                </Pressable>
+                </TouchableOpacity>
             </ScrollView>
         </View>
     )
