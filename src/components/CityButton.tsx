@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 export type Props = {
     city: any;
@@ -11,9 +11,9 @@ const CityButton: React.FC<Props> = ({
     navigation,
 }) => {
     return (
-        <Pressable style={styles.searchBtn} onPress={() => navigation.navigate('City', { value: city })}>
+        <TouchableOpacity style={styles.searchBtn} onPress={() => navigation.navigate('City', { value: city })}>
             <Text>{city}</Text>
-        </Pressable>
+        </TouchableOpacity>
     )
 }
 

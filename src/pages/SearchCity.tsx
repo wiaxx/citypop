@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { Alert, StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const SearchCity = ({ navigation }: { navigation: any }) => {
     const [value, setValue] = useState('')
+
+    const validateInput = () => {
+        if (value.trim() === '') {
+            Alert.alert('Alert', 'Please enter a city');
+            setValue('');
+            return;
+        }
+        navigation.navigate('City', { value: value })
+        setValue('');
+    }
 
     return (
         <View style={styles.container}>
@@ -14,8 +24,8 @@ const SearchCity = ({ navigation }: { navigation: any }) => {
                     onChangeText={newValue => setValue(newValue)}
                     defaultValue={value}
                     style={styles.txtInput} />
-                    {/* onPress, go to City page and make an api request with value from */}
-                <TouchableOpacity onPress={() => navigation.navigate('City', { value: value })}> 
+                    {/* onPress, validate input and then go to City page and make an api request if correct */}
+                <TouchableOpacity onPress={validateInput}> 
                     <AntDesign name="search1" size={34} color="black" style={styles.searchIcon} />
                 </TouchableOpacity>
             </ScrollView>
