@@ -12,7 +12,7 @@ const City = ({ route }: { route: any }) => {
     const fetchData = async (city: string) => {
         try {
             setLoading(true)
-            const response = await fetch(`http://api.geonames.org/searchJSON?username=weknowit&name_startsWith=${city}&maxRows=1&featureClass=P`);
+            const response = await fetch(`http://api.geonames.org/searchJSON?username=weknowit&name_startsWith=${city}&name=${city}&maxRows=1&featureClass=P`);
             const data = await response.json();
             setData(data.geonames);
         } catch (error) {
